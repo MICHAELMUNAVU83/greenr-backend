@@ -1,2 +1,0 @@
-class CarbonCreditsController < ApplicationController
-end
