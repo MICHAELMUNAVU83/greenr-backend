@@ -1,0 +1,2 @@
+class CarbonCreditsController < ApplicationController
+end
