@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_082448) do
     t.string "username"
     t.string "password_digest"
     t.string "email"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
