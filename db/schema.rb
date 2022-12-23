@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_082448) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_160425) do
+  create_table "carbon_credits", force: :cascade do |t|
+    t.string "amount"
+    t.integer "price"
+    t.string "source"
+    t.string "image"
+    t.boolean "approved"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carbon_credits_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "buyer_phone_number"
+    t.string "buyer_location"
+    t.integer "user_id", null: false
+    t.integer "carbon_credit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carbon_credit_id"], name: "index_transactions_on_carbon_credit_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.string "email"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carbon_credits", "users"
+  add_foreign_key "transactions", "carbon_credits"
+  add_foreign_key "transactions", "users"
 end
