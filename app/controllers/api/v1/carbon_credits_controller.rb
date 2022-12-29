@@ -22,6 +22,12 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
         render json: carbon_credit, status: :accepted
     end
 
+    def destroy
+        carbon_credit = CarbonCredit.find(params[:id])
+        carbon_credit.destroy
+        head :no_content
+    end
+
     private
 
     def carbon_credit_params
