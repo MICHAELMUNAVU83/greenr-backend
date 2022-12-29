@@ -4,7 +4,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found_respons
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        render json: CarbonCredit.all, status: :ok
+        render json: CarbonCredit.all, include: [:user],status: :ok
     end
 
     def create
@@ -17,7 +17,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
     end
 
     def show
-        render json: CarbonCredit.find(params[:id]), status: :ok
+        render json: CarbonCredit.find(params[:id]), include: [:user], status: :ok
     end
 
     def update
@@ -35,7 +35,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
     private
 
     def carbon_credit_params
-        params.require(:carbon_credit).permit(:amount, :price, :source, :image)
+        params.require(:carbon_credit).permit(:amount, :price, :source, :image, :approved)
     end
 
     def render_record_not_found_response

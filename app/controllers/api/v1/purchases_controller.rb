@@ -5,13 +5,13 @@ class Api::V1::PurchasesController < ApplicationController
     
         def index
             my_purchases = Purchase.all.includes(:user).where(user_id: params[:user_id])
-            render json: my_purchases, status: :ok
+            render json: my_purchases,include: [:carbon_credit, :user], status: :ok
         end
 
 
         def all_purchases
             all_purchases = Purchase.all.includes(:user)
-            render json: all_purchases, status: :ok
+            render json: all_purchases ,include: [:carbon_credit, :user], status: :ok
         end
     
         def create
@@ -20,7 +20,7 @@ class Api::V1::PurchasesController < ApplicationController
         end
     
         def show
-            render json: Purchase.find(params[:id]), status: :ok
+            render json: Purchase.find(params[:id]), include: [:carbon_credit, :user], status: :ok
         end
     
         private
