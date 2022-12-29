@@ -6,3 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Seeding database..."
+
+carbon_credits = CarbonCredit.create([
+    {   
+        amount: "1 ton", price: 10, source: "trees", image: "https://www.carbonfund.org/wp-content/uploads/2019/10/Carbon-Fund-Logo-1.png", approved: true, user_id: 1 }
+
+
+])
