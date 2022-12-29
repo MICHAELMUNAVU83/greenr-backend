@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :carbon_credits
       post '/login', to: 'auth#create'
       resources :purchases
+      get '/all_purchases', to: 'purchases#all_purchases'
       get '/profile', to: 'users#profile'
     end
   end

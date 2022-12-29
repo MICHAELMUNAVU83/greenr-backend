@@ -4,15 +4,18 @@ class Api::V1::PurchasesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     
         def index
-            render json: Purchase.all, status: :ok
+            my_purchases = Purchase.all.includes(:user).where(user_id: params[:user_id])
+            render json: my_purchases, status: :ok
+        end
+
+
+        def all_purchases
+            all_purchases = Purchase.all.includes(:user)
+            render json: all_purchases, status: :ok
         end
     
         def create
             purchase = Purchase.new(purchase_params)
-    
-            #Add user ID from JWT token to carbon credit record before saving
-            purchase.assign_attributes(user_id: decoded_token[0]['user_id'])
-            purchase.save
             render json: purchase, status: :created
         end
     
@@ -23,7 +26,7 @@ class Api::V1::PurchasesController < ApplicationController
         private
     
         def purchase_params
-            params.require(:purchase).permit(:buyer_phone_number, :buyer_location, :carbon_credit_id)
+            params.require(:purchase).permit(:buyer_phone_number, :buyer_location, :carbon_credit_id, :user_id)
         end
     
         def render_record_not_found_response
