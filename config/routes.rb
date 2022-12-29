@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :carbon_credits
       post '/login', to: 'auth#create'
-      resources :transactions
+      resources :purchases
       get '/profile', to: 'users#profile'
     end
   end
