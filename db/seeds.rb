@@ -5,16 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Deleting initial seeds..."
+puts "Seeding database..."
 
-User.destroy_all
-CarbonCredit.destroy_all
-Purchase.destroy_all
+carbon_credits = CarbonCredit.create([
+    {   
+        amount: "1 ton", price: 10, source: "trees", image: "https://www.carbonfund.org/wp-content/uploads/2019/10/Carbon-Fund-Logo-1.png", approved: true, user_id: 1 }
 
-puts "Resetting primary key sequence..."
 
-ActiveRecord::Base.connection.tables.each do |t|
-    ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = '#{t}'")
-end
-
-puts "Database reset complete!"
+])

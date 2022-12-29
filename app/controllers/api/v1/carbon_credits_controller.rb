@@ -1,23 +1,19 @@
 class Api::V1::CarbonCreditsController < ApplicationController
-
+skip_before_action :authorized
 rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found_response
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        render json: CarbonCredit.all, status: :ok
+        render json: CarbonCredit.all, include: [:user, :purchase], status: :ok
     end
 
     def create
-        carbon_credit = CarbonCredit.new(carbon_credit_params)
-
-        #Add user ID from JWT token to carbon credit record before saving
-        carbon_credit.assign_attributes(user_id: decoded_token[0]['user_id'])
-        carbon_credit.save
+        carbon_credit = CarbonCredit.create(carbon_credit_params)
         render json: carbon_credit, status: :created
     end
 
     def show
-        render json: CarbonCredit.find(params[:id]), status: :ok
+        render json: CarbonCredit.find(params[:id]), include: [:user], status: :ok
     end
 
     def update
@@ -35,7 +31,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
     private
 
     def carbon_credit_params
-        params.require(:carbon_credit).permit(:amount, :price, :source, :image)
+        params.require(:carbon_credit).permit(:amount, :price, :source, :image, :approved, :user_id)
     end
 
     def render_record_not_found_response
