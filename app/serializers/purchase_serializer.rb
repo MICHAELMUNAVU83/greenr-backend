@@ -1,5 +1,5 @@
 class PurchaseSerializer < ActiveModel::Serializer
   attributes :id, :buyer_phone_number, :buyer_location
-  has_one :user
-  has_one :carbon_credit
+  belongs_to :carbon_credit
+  belongs_to :user
 end
