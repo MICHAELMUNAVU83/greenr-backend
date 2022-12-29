@@ -9,6 +9,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
 
     def create
         carbon_credit = CarbonCredit.new(carbon_credit_params)
+
+        #Add user ID from JWT token to carbon credit record before saving
         carbon_credit.assign_attributes(user_id: decoded_token[0]['user_id'])
         carbon_credit.save
         render json: carbon_credit, status: :created
