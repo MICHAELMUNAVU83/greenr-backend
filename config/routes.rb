@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       resources :carbon_credits
+      get '/my_carbon_credits/:user_id', to: 'carbon_credits#my_carbon_credits'
       post '/login', to: 'auth#create'
       resources :purchases
       get '/my_purchases/:user_id', to: 'purchases#my_purchases'

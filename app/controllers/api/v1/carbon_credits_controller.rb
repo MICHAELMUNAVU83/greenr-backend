@@ -7,6 +7,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
         render json: CarbonCredit.all, include: [:user, :purchase], status: :ok
     end
 
+    def my_carbon_credits
+        render json: CarbonCredit.where(user_id: params[:user_id]), include: [:user, :purchase], status: :ok
+    end
+
     def create
         carbon_credit = CarbonCredit.create(carbon_credit_params)
         render json: carbon_credit, status: :created
