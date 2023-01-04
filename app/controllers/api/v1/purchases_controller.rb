@@ -4,14 +4,16 @@ class Api::V1::PurchasesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     
         def index
-            my_purchases = Purchase.all.includes(:user).where(user_id: params[:user_id])
-            render json: my_purchases,include: [:carbon_credit, :user], status: :ok
+            all_purchases = Purchase.all.includes(:user)
+            render json: all_purchases ,include: [:carbon_credit, :user], status: :ok
+          
         end
 
 
-        def all_purchases
-            all_purchases = Purchase.all.includes(:user)
-            render json: all_purchases ,include: [:carbon_credit, :user], status: :ok
+        def my_purchases
+            my_purchases = Purchase.where(user_id: params[:user_id])
+            render json: my_purchases, include: [:carbon_credit, :user], status: :ok
+          
         end
     
         def create
