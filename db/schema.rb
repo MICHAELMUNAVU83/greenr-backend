@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_094610) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_152852) do
   create_table "carbon_credits", force: :cascade do |t|
     t.string "amount"
     t.integer "price"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_094610) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
     t.index ["user_id"], name: "index_carbon_credits_on_user_id"
   end
 

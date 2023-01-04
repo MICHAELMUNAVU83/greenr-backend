@@ -31,7 +31,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
     private
 
     def carbon_credit_params
-        params.require(:carbon_credit).permit(:amount, :price, :source, :image, :approved, :user_id)
+        params.require(:carbon_credit).permit(:amount, :price, :source, :image, :approved, :user_id,:location)
     end
 
     def render_record_not_found_response
