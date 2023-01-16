@@ -53,4 +53,6 @@ purchases = Purchase.create([
 
 ])
 
+
+admin = User.create({username:"admin", password:"123", email:"admin@gmail.com", role:"admin"})
 puts "Seeding done!"
