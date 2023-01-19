@@ -1,89 +1,94 @@
-## CREATE A USER (SIGN UP)
+# ![Green Logo](src/components/Images/headerlogo.png)   Greenr App  
 
-To create a user, you need to send a POST request to the api/v1/users endpoint with the following parameters:
 
-`
-{
-    "user":
-    {"username":"joshhhhh",
-          "email":"joshuaaa",
-          "role":"buyer",
-          "password":"123456"
- }
-}`
+## Brief Description
+For a start, here are a list of useful links.
+1. [Front end as deployed on Netlify](https://greenr-frontend.netlify.app/)
+2. [Back end which is deployed on Railway.app]()
+3. [Figma Designs](https://www.figma.com/file/SZEEqh7tZ0w0Y2nN2Ky7hp/greenr?node-id=0%3A3)
+4. [A video recording of how the app works]()
 
-## LOGIN IN A USER (SIGN IN)
+Greenr is an application whereby the carbon emmitters can purchase carbon credits .The carbon credits allows them to emit a certain percentage of Carbon Dioxide or other green-house gases to the environment.The ultimate goal is to reduce emission of the carbon Dioxide and green-house gases to the environment.
 
-To login a user you need to send a POST request to the api/v1/login endpoint with the following parameters:
 
-`{
-"user":
-{"username":"joshhhhh",
+| **Username** | **Password** |
+|:------------:|:------------:|
+|  seller1     |   123        |
+|  seller2     |   123        |
+|  buyer1      |   123        |
+|  buyer2      |   123        |
+|  Admin       |   123        |
 
-          "password":"123456"
+## App Features
 
-}
-}
+### Sign up
+To sign up, you will be required to enter your user name,email, password, and role. Some of these information are required before the form is submitted in the first place.Onc you have signed up, you will be taken to the home page.
 
-`
+### Sign in
+You can sign in with your username and password. Once you sign in, your will be taken to the home page where you can see a list of available carbon credits if you are a buyer or a list of available carbon credits that are yet to be purchased if you are a seller.
 
-## TO GET THE CURRENT USER
+### Buy Carbon Credits
+You can buy carbon credits when you have an a buyer account. The buyer should have some amount of money for them to purchase  the carbon credits.Once you purchase the carbon credits it will not be availble for sale anymore and will be removed from the sellers page.
 
-send a get to /api/v1/profile to get the current user with the token in the body
+### Sell Carbon Credits
+A seller can be able to register new carbon credits . Once they have registered the Admin approves it and it is available for the buyers to purchase. The admin verifies the carbon credits then approves it.
 
-This is the response you get
+### Log out
+Both the buyer and the seller can log out of their accounts .
 
-`{
-    "user": {
-        "username": "joshhhhh",
-        "email": "joshuaaa",
-        "role": "buyer",
-        "carbon_credits": [],
-        "purchases": []
-    }
-}`
+## Setup Requirments
+Incase you want to run it in your local machine, you will need the following;
+- ruby and rails 
+- sql server
+-   React
 
-## Carbon Credits
+Run the following commands to set up the front end
+1.  `git clone git@github.com:MICHAELMUNAVU83/greenr-frontend.git`
+2.  `cd greenr-frontend.git`
+3.  `npm install`
+4.  `npm start`
 
-To create a carbon credit, you need to send a POST request to the api/v1/carbon_credits endpoint with the following parameters:
+To set up the back end, run the following commands
+1.  `git clone git@github.com:MICHAELMUNAVU83/greenr-backend.git`
+2.  `cd greenr-backend`
+3.  `bundle install`
+4.  `rails db:create db:migrate db:seed`
+4.  `rails s`
 
-`
-{
-"amount":"456789",
-"price":100,
-"source":"trees",
-"image":"image1",
-"user_id":2
 
-}
-`
 
-To update a carbon credit to be approved, you need to send a PATCH request to the api/v1/carbon_credits/:id endpoint with the following parameters:
 
-`{
-    "approved":true
-}`
 
-To get all carbon credits, you need to send a GET request to the api/v1/carbon_credits endpoint
+## Author1
+👤 **MICHAELMUNAVU83**
 
-To get a carbon credit, you need to send a GET request to the api/v1/carbon_credits/:id endpoint
+- GitHub: [@MICHAELMUNAVU83](https://github.com/MICHAELMUNAVU83)
 
-To delete a carbon credit, you need to send a DELETE request to the api/v1/carbon_credits/:id endpoint
+)
 
-## Purchases
+## Author2
+👤 **AFANDIELOMDA**
 
-To create a purchase, you need to send a POST request to the api/v1/purchases endpoint with the following parameters:
+- GitHub: [@Afandi](https://github.com/AfandiElomda)
 
-`
-{
-"buyer_phone_number":"074546577",
-"buyer_location":"Nairobi",
-"user_id":2,
-"carbon_credit_id":1
+)
 
-}
-`
+## Author3
+👤 **MERCYCHERUIYOT**
 
-To get your purchases, you need to send a GET request to the api/v1/purchases/:id endpoint
+- GitHub: [@Mercy](https://github.com/Mercy-Cheruiyot)
+)
 
-For the admin to get all purchases, you need to send a GET request to the api/v1/all_purchases endpoint
+## Author4
+👤 **JOSEPHMWANGI**
+
+- GitHub: [@Joseph](https://github.com/Realmunene)
+)
+
+## Author5
+👤 **BENAIAHPRAISE**
+
+- GitHub: [@Benaiah](https://github.com/benaiah-ke)
+)
+
+
