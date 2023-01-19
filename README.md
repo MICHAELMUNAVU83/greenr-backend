@@ -1,4 +1,8 @@
-# ![Green Logo](src/components/Images/headerlogo.png)   Greenr App  
+  Greenr App  
+  
+  
+  ![Screenshot from 2023-01-19 08-25-15](https://user-images.githubusercontent.com/86654131/213364352-6ae2b0e4-94ca-43df-8b3c-f11a7fadc994.png)
+
 
 
 ## Brief Description
