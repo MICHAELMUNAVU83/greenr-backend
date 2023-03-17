@@ -17,6 +17,8 @@ gem "rack-cors"
 gem "active_model_serializers"
 gem "jwt"
 
+gem "pg"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
